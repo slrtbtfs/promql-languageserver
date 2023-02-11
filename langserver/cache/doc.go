@@ -12,5 +12,5 @@
 // limitations under the License.
 
 // Package cache is the component of the PromQL language server that is
-//responsible for the caching the content and parse results of documents opened in the language client.
+// responsible for the caching the content and parse results of documents opened in the language client.
 package cache

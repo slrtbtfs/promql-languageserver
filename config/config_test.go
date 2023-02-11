@@ -54,10 +54,10 @@ func TestUnmarshalENV(t *testing.T) {
 		},
 	}
 	for _, testSuite := range testSuites {
-		// nolint
+		//nolint
 		t.Run(testSuite.title, func(t *testing.T) {
 			os.Clearenv()
-			// nolint
+			//nolint
 			for k, v := range testSuite.variables {
 				os.Setenv(k, v)
 			}

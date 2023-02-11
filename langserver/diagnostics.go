@@ -50,7 +50,7 @@ func (s *server) GetDiagnostics(uri protocol.DocumentURI) (*protocol.PublishDiag
 func (s *server) diagnostics(uri protocol.DocumentURI) {
 	reply, err := s.GetDiagnostics(uri)
 	if err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(s.lifetime, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: err.Error(),
@@ -58,7 +58,7 @@ func (s *server) diagnostics(uri protocol.DocumentURI) {
 	}
 
 	if err = s.client.PublishDiagnostics(s.lifetime, reply); err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(s.lifetime, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: errors.Wrapf(err, "failed to publish diagnostics").Error(),
@@ -74,7 +74,7 @@ func (s *server) clearDiagnostics(ctx context.Context, uri protocol.DocumentURI,
 	}
 
 	if err := s.client.PublishDiagnostics(ctx, diagnostics); err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(s.lifetime, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: errors.Wrapf(err, "failed to publish diagnostics").Error(),

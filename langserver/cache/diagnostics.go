@@ -87,7 +87,7 @@ func (d *DocumentHandle) warnQuotedYaml(start token.Pos, end token.Pos) error {
 
 // addDiagnostic adds a protocol.Diagnostic to the diagnostics of a Document.
 //
-//If the context is expired the diagnostic is discarded.
+// If the context is expired the diagnostic is discarded.
 func (d *DocumentHandle) addDiagnostic(diagnostic *protocol.Diagnostic) error {
 	d.doc.mu.Lock()
 	defer d.doc.mu.Unlock()

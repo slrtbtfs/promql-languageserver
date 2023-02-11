@@ -22,7 +22,7 @@ import (
 	"os"
 	"time"
 
-	kitlog "github.com/go-kit/kit/log"
+	kitlog "github.com/go-kit/log"
 	"github.com/prometheus-community/promql-langserver/config"
 	promClient "github.com/prometheus-community/promql-langserver/prometheus"
 	"github.com/prometheus/common/route"

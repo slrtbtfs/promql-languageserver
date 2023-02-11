@@ -32,7 +32,7 @@ import (
 var (
 	// defining this global variable will avoid to initialized it each time
 	// and it will crash immediately the server during the initialization in case the version is not well defined
-	requiredVersion = semver.MustParse("2.15.0") // nolint: gochecknoglobals
+	requiredVersion = semver.MustParse("2.15.0") //nolint: gochecknoglobals
 )
 
 func buildGenericRoundTripper(connectionTimeout time.Duration) *http.Transport {
@@ -43,7 +43,7 @@ func buildGenericRoundTripper(connectionTimeout time.Duration) *http.Transport {
 			KeepAlive: 30 * time.Second,
 		}).DialContext,
 		TLSHandshakeTimeout: 30 * time.Second,
-		TLSClientConfig:     &tls.Config{InsecureSkipVerify: true}, // nolint: gas, gosec
+		TLSClientConfig:     &tls.Config{InsecureSkipVerify: true}, //nolint: gas, gosec
 	}
 }
 

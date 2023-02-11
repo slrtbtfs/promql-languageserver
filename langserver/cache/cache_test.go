@@ -23,7 +23,7 @@ import (
 	"github.com/prometheus-community/promql-langserver/internal/vendored/go-tools/lsp/protocol"
 )
 
-func TestCache(t *testing.T) { // nolint:funlen
+func TestCache(t *testing.T) { //nolint:funlen
 	c := &DocumentCache{}
 
 	c.Init()

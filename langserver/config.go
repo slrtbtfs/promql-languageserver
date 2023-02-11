@@ -39,7 +39,7 @@ func (s *server) DidChangeConfiguration(ctx context.Context, params *protocol.Di
 	if params == nil {
 		return nil
 	}
-	// nolint: errcheck
+	//nolint: errcheck
 	s.client.LogMessage(
 		s.lifetime,
 		&protocol.LogMessageParams{
@@ -54,7 +54,7 @@ func (s *server) DidChangeConfiguration(ctx context.Context, params *protocol.Di
 	//If you are reading this code and are aware of a better solution to do this, feel free to submit a PR.
 	rawData, marshallError := json.Marshal(params.Settings)
 	if marshallError != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(ctx, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: "unable to serialize the configuration",
@@ -62,7 +62,7 @@ func (s *server) DidChangeConfiguration(ctx context.Context, params *protocol.Di
 		return nil
 	}
 	if err := json.Unmarshal(rawData, &config); err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(ctx, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: errors.Wrap(err, "unexpected configuration format").Error(),
@@ -71,7 +71,7 @@ func (s *server) DidChangeConfiguration(ctx context.Context, params *protocol.Di
 	}
 
 	if err := s.setURLFromChangeConfiguration(config); err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(ctx, &protocol.LogMessageParams{
 			Type:    protocol.Info,
 			Message: err.Error(),
@@ -79,7 +79,7 @@ func (s *server) DidChangeConfiguration(ctx context.Context, params *protocol.Di
 	}
 
 	if err := s.setMetadataLookbackInterval(config); err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(ctx, &protocol.LogMessageParams{
 			Type:    protocol.Info,
 			Message: err.Error(),
@@ -100,7 +100,7 @@ func (s *server) setURLFromChangeConfiguration(settings localLSPConfiguration) e
 
 func (s *server) connectPrometheus(url string) error {
 	if err := s.metadataService.ChangeDataSource(url); err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.ShowMessage(s.lifetime, &protocol.ShowMessageParams{
 			Type:    protocol.Error,
 			Message: fmt.Sprintf("Failed to connect to Prometheus at %s:\n\n%s ", url, err.Error()),

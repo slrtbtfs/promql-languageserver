@@ -3,7 +3,7 @@ version: 2.1
 executors:
   golang:
     docker:
-      - image: cimg/go:1.18
+      - image: cimg/go:1.20
 jobs:
   test:
     executor: golang
@@ -18,7 +18,7 @@ jobs:
       - restore_cache:
           keys:
             - v5-crossbuild-cache
-      - run: go install github.com/goreleaser/goreleaser@v1.7.0
+      - run: go install github.com/goreleaser/goreleaser@v1.15.2
       - run: git reset --hard
       - run: make crossbuild
       - run: mkdir artifacts
@@ -40,7 +40,7 @@ jobs:
             - v5-crossbuild-cache
       - run: docker login docker.io -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
       - run: docker login quay.io -u $QUAY_LOGIN -p $QUAY_PASSWORD
-      - run: cd ..; GO111MODULE=on go get github.com/goreleaser/goreleaser@v0.131.1
+      - run: cd ..; GO111MODULE=on go get github.com/goreleaser/goreleaser@v1.15.2
       - run: git reset --hard
       - run: make release
   check_repo_consistency:
@@ -104,4 +104,4 @@ workflows:
             tags:
               only: /v[0-9]+(\.[0-9]+)*(-.*)*/
 orbs:
-  prometheus: prometheus/prometheus@0.11.0
+  prometheus: prometheus/prometheus@0.17.1

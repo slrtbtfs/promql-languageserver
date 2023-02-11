@@ -63,7 +63,7 @@ const (
 	TextFormat LogFormat = "text"
 )
 
-var mapLogFormat = map[LogFormat]bool{ // nolint: gochecknoglobals
+var mapLogFormat = map[LogFormat]bool{ //nolint: gochecknoglobals
 	JSONFormat: true,
 	TextFormat: true,
 }

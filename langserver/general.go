@@ -68,14 +68,14 @@ func (s *server) Initialized(ctx context.Context, _ *protocol.InitializedParams)
 
 	if len(s.prometheusURL) > 0 {
 		if err := s.connectPrometheus(s.prometheusURL); err != nil {
-			// nolint: errcheck
+			//nolint: errcheck
 			s.client.LogMessage(ctx, &protocol.LogMessageParams{
 				Type:    protocol.Info,
 				Message: err.Error(),
 			})
 		}
 	} else {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(ctx, &protocol.LogMessageParams{
 			Type:    protocol.Info,
 			Message: "No Prometheus",

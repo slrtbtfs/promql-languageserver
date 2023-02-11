@@ -163,7 +163,7 @@ func (d *DocumentHandle) scanYamlTreeRec(node *yaml.Node, nodeEnd token.Pos, lin
 
 // foundRelevantYamlPath is called for YAML AST Nodes that are suspected to contain a
 // PromQL query.
-func (d *DocumentHandle) foundRelevantYamlPath(node *yaml.Node, nodeEnd token.Pos, lineOffset int) error { // nolint: gocognit
+func (d *DocumentHandle) foundRelevantYamlPath(node *yaml.Node, nodeEnd token.Pos, lineOffset int) error { //nolint: gocognit
 	if node.Kind != yaml.MappingNode {
 		return nil
 	}

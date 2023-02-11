@@ -25,7 +25,7 @@ import (
 )
 
 // TestNotImplemented checks whether unimplemented functions return the approbiate Error.
-func TestNotImplemented(*testing.T) { // nolint: gocognit, funlen, gocyclo
+func TestNotImplemented(*testing.T) { //nolint: gocognit, funlen, gocyclo
 	s := &server{}
 
 	err := s.DidChangeWorkspaceFolders(context.Background(), &protocol.DidChangeWorkspaceFoldersParams{})
@@ -338,7 +338,7 @@ func TestServer(t *testing.T) { //nolint:funlen, gocognit, gocyclo
 		panic("Failed to get hovertext")
 	}
 
-	if hover == nil || strings.Contains("sum", hover.Contents.Value) {
+	if hover == nil || !strings.Contains(hover.Contents.Value, "sum") {
 		fmt.Println(hover)
 		panic("unexpected or no hovertext")
 	}
@@ -379,7 +379,7 @@ func TestServer(t *testing.T) { //nolint:funlen, gocognit, gocyclo
 		panic("Failed to get hovertext")
 	}
 
-	if hover == nil || strings.Contains("metric_name", hover.Contents.Value) {
+	if hover == nil || !strings.Contains(hover.Contents.Value, "metric_name") {
 		fmt.Println(hover)
 		panic("unexpected or no hovertext")
 	}
@@ -642,7 +642,7 @@ func TestServer(t *testing.T) { //nolint:funlen, gocognit, gocyclo
 		panic("Failed to get hovertext")
 	}
 
-	if hover == nil || strings.Contains("abs", hover.Contents.Value) {
+	if hover == nil || !strings.Contains(hover.Contents.Value, "abs") {
 		fmt.Println(hover)
 		panic("unexpected or no hovertext")
 	}

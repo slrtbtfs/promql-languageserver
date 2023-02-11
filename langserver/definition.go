@@ -29,7 +29,7 @@ func (s *server) Definition(ctx context.Context, params *protocol.DefinitionPara
 
 	defs := []protocol.Location{}
 
-	switch n := location.Node.(type) { // nolint: gocritic
+	switch n := location.Node.(type) { //nolint: gocritic
 	case *promql.VectorSelector:
 		queries, err := location.Doc.GetQueries()
 		if err != nil {

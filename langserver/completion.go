@@ -31,7 +31,7 @@ import (
 )
 
 // Completion is required by the protocol.Server interface.
-func (s *server) Completion(ctx context.Context, params *protocol.CompletionParams) (ret *protocol.CompletionList, err error) {
+func (s *server) Completion(ctx context.Context, params *protocol.CompletionParams) (ret *protocol.CompletionList, err error) { //nolint gocognit
 	location, err := s.cache.Find(&params.TextDocumentPositionParams)
 	if err != nil {
 		return nil, nil
@@ -111,7 +111,7 @@ func (s *server) completeMetricName(ctx context.Context, completions *[]protocol
 		item := protocol.CompletionItem{
 			Label:         match.Str,
 			SortText:      fmt.Sprintf("__3__%09d", match.Score),
-			Kind:          12, //Value
+			Kind:          12, // Value
 			Documentation: allMetadata[match.Str][0].Help,
 			Detail:        string(allMetadata[match.Str][0].Type),
 			TextEdit: &protocol.TextEdit{
@@ -135,8 +135,8 @@ func (s *server) completeMetricName(ctx context.Context, completions *[]protocol
 		item := protocol.CompletionItem{
 			Label:            match.Str,
 			SortText:         fmt.Sprintf("__2__%09d", match.Score),
-			Kind:             3, //Value
-			InsertTextFormat: 2, //Snippet
+			Kind:             3, // Value
+			InsertTextFormat: 2, // Snippet
 			TextEdit: &protocol.TextEdit{
 				Range:   editRange,
 				NewText: match.Str,
@@ -162,8 +162,8 @@ func (s *server) completeFunctionName(completions *[]protocol.CompletionItem, lo
 		item := protocol.CompletionItem{
 			Label:            match.Str,
 			SortText:         fmt.Sprintf("__1__%09d", match.Score),
-			Kind:             3, //Function
-			InsertTextFormat: 2, //Snippet
+			Kind:             3, // Function
+			InsertTextFormat: 2, // Snippet
 			TextEdit: &protocol.TextEdit{
 				Range:   editRange,
 				NewText: match.Str + "($1)",
@@ -184,8 +184,8 @@ func (s *server) completeFunctionName(completions *[]protocol.CompletionItem, lo
 		item := protocol.CompletionItem{
 			Label:            match.Str,
 			SortText:         fmt.Sprintf("__1__%09d", match.Score),
-			Kind:             3, //Function
-			InsertTextFormat: 2, //Snippet
+			Kind:             3, // Function
+			InsertTextFormat: 2, // Snippet
 			Detail:           aggregators[match.Str],
 			TextEdit: &protocol.TextEdit{
 				Range:   editRange,
@@ -198,7 +198,7 @@ func (s *server) completeFunctionName(completions *[]protocol.CompletionItem, lo
 	return nil
 }
 
-var aggregators = map[string]string{ // nolint:gochecknoglobals
+var aggregators = map[string]string{ //nolint:gochecknoglobals
 	"sum":          "calculate sum over dimensions",
 	"max":          "select maximum over dimensions",
 	"min":          "select minimum over dimensions",
@@ -313,7 +313,7 @@ func (s *server) completeLabel(ctx context.Context, completions *[]protocol.Comp
 	}
 	allNames, err := s.metadataService.LabelNames(ctx, metricName)
 	if err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(s.lifetime, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: errors.Wrapf(err, "could not get label data from prometheus").Error(),
@@ -340,7 +340,7 @@ OUTER:
 
 		item := protocol.CompletionItem{
 			Label: match.Str,
-			Kind:  12, //Value
+			Kind:  12, // Value
 			TextEdit: &protocol.TextEdit{
 				Range:   editRange,
 				NewText: match.Str,
@@ -356,7 +356,7 @@ OUTER:
 func (s *server) completeLabelValue(ctx context.Context, completions *[]protocol.CompletionItem, location *cache.Location, labelName string) error {
 	labelValues, err := s.metadataService.LabelValues(ctx, labelName)
 	if err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.LogMessage(s.lifetime, &protocol.LogMessageParams{
 			Type:    protocol.Error,
 			Message: errors.Wrapf(err, "could not get label value data from Prometheus").Error(),
@@ -415,7 +415,7 @@ func (s *server) completeLabelValue(ctx context.Context, completions *[]protocol
 
 		item := protocol.CompletionItem{
 			Label: quoted,
-			Kind:  12, //Value
+			Kind:  12, // Value
 			TextEdit: &protocol.TextEdit{
 				Range:   editRange,
 				NewText: quoted,

@@ -32,7 +32,7 @@ import (
 	"github.com/prometheus-community/promql-langserver/config"
 	promClient "github.com/prometheus-community/promql-langserver/prometheus"
 
-	"github.com/go-kit/kit/log"
+	"github.com/go-kit/log"
 	"github.com/prometheus-community/promql-langserver/internal/vendored/go-tools/jsonrpc2"
 	"github.com/prometheus-community/promql-langserver/internal/vendored/go-tools/lsp/protocol"
 	"github.com/prometheus-community/promql-langserver/langserver/cache"
@@ -119,7 +119,7 @@ func ServerFromStream(ctx context.Context, stream jsonrpc2.Stream, conf *config.
 			stream = jSONLogStream(stream, os.Stderr)
 		default:
 			err := fmt.Errorf("invalid log format: '%s'", conf.LogFormat)
-			// nolint: errcheck
+			//nolint: errcheck
 			s.client.ShowMessage(s.lifetime, &protocol.ShowMessageParams{
 				Type:    protocol.Error,
 				Message: err.Error(),
@@ -139,7 +139,7 @@ func ServerFromStream(ctx context.Context, stream jsonrpc2.Stream, conf *config.
 	s.prometheusURL = conf.PrometheusURL
 	prometheusClient, err := promClient.NewClient("", time.Duration(conf.MetadataLookbackInterval))
 	if err != nil {
-		// nolint: errcheck
+		//nolint: errcheck
 		s.client.ShowMessage(s.lifetime, &protocol.ShowMessageParams{
 			Type:    protocol.Error,
 			Message: fmt.Sprintf("Failed to inialized the prometheus client\n\n%s ", err.Error()),

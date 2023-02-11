@@ -12,11 +12,8 @@ builds:
     goarch:
       - amd64
       - 386
-      - arm
       - arm64
 
-    goarm:
-      - 7
 
 
 archives:

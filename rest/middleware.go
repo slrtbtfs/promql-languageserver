@@ -74,10 +74,10 @@ func getRequestDataAndID(ctx context.Context) (protocol.DocumentURI, *lspData, e
 type middlewareFunc func(http.HandlerFunc) http.HandlerFunc
 
 // manageDocumentMiddleware is an HTTP middleware that will:
-//   * generate and inject a requestID
-//   * unmarshal the body and inject it in the request context
-//   * open the document used to analyze
-//   * assure that the document used to analyze will be closed properly at the end of the HTTP request.
+//   - generate and inject a requestID
+//   - unmarshal the body and inject it in the request context
+//   - open the document used to analyze
+//   - assure that the document used to analyze will be closed properly at the end of the HTTP request.
 func manageDocumentMiddleware(langServer langserver.HeadlessServer) middlewareFunc {
 	return func(next http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
