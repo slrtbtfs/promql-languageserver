@@ -14,7 +14,7 @@ require (
 	github.com/prometheus/prometheus v0.36.2
 	github.com/rakyll/statik v0.1.7
 	github.com/sahilm/fuzzy v0.1.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.2
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f
 	gopkg.in/yaml.v3 v3.0.1
 )
