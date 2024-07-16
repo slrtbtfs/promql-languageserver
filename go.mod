@@ -12,7 +12,7 @@ require (
 	github.com/prometheus/common v0.54.0
 	github.com/prometheus/prometheus v0.47.2
 	github.com/rakyll/statik v0.1.7
-	github.com/sahilm/fuzzy v0.1.0
+	github.com/sahilm/fuzzy v0.1.1
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/xerrors v0.0.0-20220411194840-2f41105eb62f
 	gopkg.in/yaml.v3 v3.0.1
